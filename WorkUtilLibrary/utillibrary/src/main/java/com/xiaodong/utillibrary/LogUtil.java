@@ -1,5 +1,7 @@
 package com.xiaodong.utillibrary;
 
+import android.Manifest;
+import android.content.Context;
 import android.util.Log;
 
 /**
@@ -13,11 +15,17 @@ public class LogUtil {
     public static final int LEVEL_ERROR_WARN_INFO_DEBUG = 4;
 
     public static int level = LEVEL_ERROR_WARN_INFO_DEBUG;
-    public static String LOG_TAG="WARMWEATHER";
+    public static String LOG_TAG="APP_LOG";
 
     public static void d(String msg){
         if(level>=LEVEL_ERROR_WARN_INFO_DEBUG){
             Log.d(LOG_TAG, msg);
+        }
+    }
+
+    public static void d(Context context,String msg){
+        if(level>=LEVEL_ERROR_WARN_INFO_DEBUG){
+            Log.d(context.getPackageName(),msg);
         }
     }
 
@@ -27,15 +35,33 @@ public class LogUtil {
         }
     }
 
+    public static void i(Context context,String msg){
+        if(level>=LEVEL_ERROR_WARN_INFO){
+            Log.i(context.getPackageName(),msg);
+        }
+    }
+
     public static void w(String msg){
         if(level>=LEVEL_ERROR_WARN){
             Log.w(LOG_TAG, msg);
         }
     }
 
+    public static void w(Context context,String msg){
+        if(level>=LEVEL_ERROR_WARN){
+            Log.w(context.getPackageName(),msg);
+        }
+    }
+
     public static void e(String msg){
         if(level>=LEVEL_ERROR_ONLY){
             Log.e(LOG_TAG, msg);
+        }
+    }
+
+    public static void e(Context context,String msg){
+        if(level>=LEVEL_ERROR_ONLY){
+            Log.e(context.getPackageName(),msg);
         }
     }
 }
